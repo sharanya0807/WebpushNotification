@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="GetDetails()">GetDetails</button>
+
+    <script>
+        addEventListener('load',async ()=> {
+            let sw=await navigator.serviceWorker.register('./sw.js')
+            console.log(sw)
+        })
+
+        async function GetDetails(){
+            let sw = await navigator.serviceWorker.ready;
+            let push = await sw.pushManager.GetDetails({
+                userVisibleOnly:true,
+                applicationServerKey:'BN2zMXqCWhQS0jf07FnUYvfP10jEb7FZ4H9Hi5-wzamKqozViKn6roNjEs5t-tl1ilUIYoZK5KM2UNzFzJwzbAg'
+            })
+            console.log(JSON.stringify(push))
+        }
+    </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="GetDetails()">GetDetails</button>
+    <button onclick="subscribe()">GetDetails</button>
 
     <script>
         addEventListener('load',async ()=> {
@@ -15,7 +15,7 @@
             console.log(sw)
         })
 
-        async function GetDetails(){
+        async function subscribe(){
             let sw = await navigator.serviceWorker.ready;
             let push = await sw.pushManager.subscribe({
                 userVisibleOnly:true,
